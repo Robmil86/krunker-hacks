@@ -3413,7 +3413,7 @@ function patchOnKeyPressed(script) {
     });
 }
 function patchForAimbot(script) {
-    return applyPatch(script, 'patchForAimbot', {if\(this\.target\){(.+)}},this.camLookAt=, ($0, $1) => {
+    return applyPatch(script, 'patchForAimbot', {if(this.target){(.+)}},this.camLookAt=, ($0, $1) => {
         return `
       {
         if (this.target) {
@@ -3433,7 +3433,7 @@ function patchForAimbot(script) {
     });
 }
 function patchForWallHack(script) {
-    return applyPatch(script, 'patchForWallHack', if\(([a-zA-Z0-9]+)\.inView\){(.+)}else ([a-zA-Z0-9]+)\.style\.display="none"}var ([a-zA-Z0-9]+);, ($0, $1, $2, $3, $4) => {
+    return applyPatch(script, 'patchForWallHack', if(([a-zA-Z0-9]+).inView){(.+)}else ([a-zA-Z0-9]+).style.display="none"}var ([a-zA-Z0-9]+);, ($0, $1, $2, $3, $4) => {
         return `
       if (${$1}.inView || window.wallHackEnabled) {
         ${$2}
